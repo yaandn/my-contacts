@@ -1,0 +1,35 @@
+Inserir uma linha:
+
+db.query(
+  `INSERT INTO nomedatabela(valeoresdalinha)
+  VALUES(valores que serão inseridos na linha)
+  RETURNING *`, [parametros do controller (a ordem importa)]
+)
+
+Atualizar uma linha da coluna
+
+db.query(
+  `UPDATE nomedatabela
+  SET nomedaprorpiedade=$1
+  WHERE id == $2
+  RETURNING *
+  `, [parametros do controller (a ordem importa)]
+)
+
+filtrar por um valor:
+
+db.query(
+  `SELECT * FROM nomedatabela WHERE id = $1`, [parametros do controller (a ordem importa)]
+)
+
+Ordenar o valor de retorno:
+
+db.query(
+  `SELECT * FROM nomedatabela ORDER BY propriedade`
+)
+
+
+
+
+
+

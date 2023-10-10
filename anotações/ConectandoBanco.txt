@@ -1,0 +1,36 @@
+Para conectar o banco de dados pg com o node primeiro precisamos
+instalar um pacote chamado pg que é o client do node que fará a conexão com o banco de dados
+
+após ter instalado, criamos dentro de database um arquivo chamado index.js
+e nesse arquivo obtemos o client do pacote pg com o comando:
+
+const { Client } = require('pg');
+
+agora basta instanciar essa classe passando um objeto de conexão como constructor, que terá as propriedades:
+host, pot, user, password, database
+
+const client = new Client({
+  host: "localhost",
+  port: 5432,
+  user: "root",
+  password: "root",
+  database: mycontacts
+})
+
+agora basta passar o comando:
+
+client.connect();
+
+nesse arquivo ainda precisamos criar a função que irá ficar responsável por manipular as
+linhas da nossa query, ja criamos e exportamos na mesma linha
+
+  export.query = async (query,values) {
+    const {rows} = await client.query(query, values);
+    return rows
+  }
+
+
+
+
+
+

@@ -1,0 +1,48 @@
+Para começarmos a criar o banco de dados, primeiramente precisamos criar uma pasta chamada data
+base na dentro de src, e criar um arquivo .db chamado schema
+
+o próximo passo é acessar o container no docker com o comando sudo docker exec -it pg bash
+agora para logar no postgre rodamos o comando psql -U root(usuário criado na imagem)
+
+para listar as bases de dados usamos \l
+
+para criar a base de dados usamos:
+
+CREATE DATABASE nomeescolhido;
+
+para criarmos uma tabela usamos a função:
+
+CREATE TABLE nomeescolhido IF NOT EXISTS(
+  // aqui seguem os dados da nossa entidade
+  nome TIPO REQUISITO UNICIDADE
+
+  //  exemplos
+  id UUID NOT NULL UNIQUE DEFAULT uuid_generate_v4()
+  email VARCHAR NOT NULL UNIQUE,
+  password VARCHAR NOT NULL
+)
+
+para acessar o pacote uuid no postgre precisamos criar a extensão "uuid-ossp"
+com o comando:
+
+CREATE EXTENISON  "uuid-ossp"
+
+para acessar uma base de dados no terminal usamos o \c nome da database
+
+Para fazer relacionamento usamos o método de chave estrangeira, seguindo o exemplo:
+
+CREATE TABLE IF NOT EXISTS contacts(
+  id UUID NOT NULL UNIQUE uuid_generate_v4(),
+  name VARCHAR NOT NULL
+  email VARCHAR NOT NULL UNIQUE,
+  phone VARCHAR NOT NULL,
+  category_id UUID,
+  FOREIGN KEY(category_id) REFERENCES categories(id)
+)
+
+
+
+
+
+
+

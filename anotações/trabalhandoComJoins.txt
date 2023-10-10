@@ -1,0 +1,32 @@
+o comando JOIN do sql serve para mesclarmos os dados de uma tabela com outra
+ele vem escrito logo depois do FROM  e devemos ficar ligados na ambiguidade
+causada pelos nomes iguais em diferentes tabelas, para evitar isso usamos
+nomedatabela.nome da propriedade
+
+
+mesclando a tabela de contatos com a de categorias
+
+ SELECT contacts.*, categories.name AS category_name
+ FROM contacts
+ LEFT JOIN ON contacts.category_id = categories.category_id --> linha do join
+
+exemplo
+
+user {
+  id,
+  name,
+  email,
+  password,
+  reservas_id
+
+}
+
+reservas {
+  id,
+  name,
+  show,
+}
+
+SELECT users.*, reservas.name AS reserva_name
+FROM users
+LEFT JOIN reservas ON user.reservas_id = reservas.id

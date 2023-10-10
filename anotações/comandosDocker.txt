@@ -1,0 +1,11 @@
+baixar uma imagem -> sudo docker pull (nomedaimagem)
+listar imagens -> sudo docker image ls
+criar um container -> docker run --name (nomedocontainer) -e POSTGRES_USER=root -e POSTGRES_PASSWORD=root -p 5432:5432 -d postgres
+visualizar conteainers em execução -> sudo docker ps
+visualizar containers rodando ou não -> sudo docher -a ps
+parar um container -> docker stop (nomedocontainer)
+apagar uma imagem (parar e deletar um container) -> sudo docker rmi (nomedaimagem)
+apagar um container -> sudo docker container rm (nomedocontainer)
+parar um container -> sudo docker stop (nomedoconainer)
+
+

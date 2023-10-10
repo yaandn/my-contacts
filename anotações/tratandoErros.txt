@@ -1,0 +1,17 @@
+Para tratar os erros gerais na aplicação usamos um middleware
+do error handler que está disponivel no express, ele deve vir abaixo do middleware das rotas
+
+app.use((error, request, response, next) => {
+  console.log(error);
+  response.sendStatus(500);
+})
+
+para usar o error handler nas funções assíncronas instalamos o pacote express-async-errors
+
+yarn add express-async-errors
+
+e buscamos esse pacote no nosso index
+
+require('express-async-errors');
+
+(não armazenamos em nenhuma variável)
